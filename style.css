@@ -114,3 +114,6 @@ input {
 #weather-condition {
   text-transform: capitalize;
 }
+#footer {
+  text-align: center;
+}
