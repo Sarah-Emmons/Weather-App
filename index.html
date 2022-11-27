@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="city-header">Edmonton, CA</h1>
+      <br />
+      <div class="today-info">
+        <div class="row">
+          <div class="col-5" id="weather-condition">Mostly Cloudy</div>
+          <div class="col-2" id="high-low">
+            <span class="todayHigh" id="today-high">H: 6°C</span>
+            <br />
+            <span class="todayLow" id="today-low">L: -2°C</span>
+          </div>
+          <div class="col-5" id="weather-time">Sunday 6:00pm</div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-2">
+            <img
+              src="images/partly_cloudy.png"
+              alt="partly_cloudy"
+              height="75px"
+              width="75px"
+            />
+          </div>
+          <div class="col-1"></div>
+          <div class="col-2" id="today-temp">5°C</div>
+          <div class="col-1"></div>
+          <div class="col-3">
+            <!--<u>Precipitation</u>: <span id="precipitation">1%</span>
+            <br />-->
+            <u>Humidity</u>: <span id="humidity">64%</span>
+            <br />
+            <br />
+            <u>Wind</u>: <span id="wind">5 km/h</span>
+          </div>
+          <div class="col-1"></div>
+        </div>
+        <h2 id="today-day">Sunday</h2>
+      </div>
+      <br />
+      <div class="coming">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-2">
+            <div class="card" style="width: 100%">
+              <div class="card-body-1">
+                <h5 class="card-title-1" id="day-one-temp-high">H: 5°C</h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="day-one-temp-low">
+                  L: -2°C
+                </h6>
+              </div>
+            </div>
+            <div class="day1">Monday</div>
+          </div>
+          <div class="col-2"></div>
+          <div class="col-2">
+            <div class="card" style="width: 100%">
+              <div class="card-body-2">
+                <h5 class="card-title-2" id="day-two-temp-high">7°C</h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="day-two-temp-low">
+                  -3°C
+                </h6>
+              </div>
+            </div>
+            <div class="day2">Tuesday</div>
+          </div>
+          <div class="col-3"></div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-2">
+            <div class="card" style="width: 100%">
+              <div class="card-body-3">
+                <h5 class="card-title-1" id="day-three-temp-high">7°C</h5>
+                <h6
+                  class="card-subtitle mb-2 text-muted"
+                  id="day-three-temp-low"
+                >
+                  0°C
+                </h6>
+              </div>
+            </div>
+            <div class="day3">Wednesday</div>
+          </div>
+          <div class="col-2"></div>
+          <div class="col-2">
+            <div class="card" style="width: 100%">
+              <div class="card-body-4">
+                <h5 class="card-title-2" id="day-four-temp-high">13°C</h5>
+                <h6
+                  class="card-subtitle mb-2 text-muted"
+                  id="day-four-temp-low"
+                >
+                  1°C
+                </h6>
+              </div>
+            </div>
+            <div class="day4">Thursday</div>
+          </div>
+          <div class="col-2"></div>
+          <div class="col-2">
+            <div class="card" style="width: 100%">
+              <div class="card-body-5">
+                <h5 class="card-title-2" id="day-five-temp-high">13°C</h5>
+                <h6
+                  class="card-subtitle mb-2 text-muted"
+                  id="day-five-temp-low"
+                >
+                  2°C
+                </h6>
+              </div>
+            </div>
+            <div class="day5">Friday</div>
+          </div>
+          <div class="col-1"></div>
+        </div>
+        <h2>Upcoming Forecast</h2>
+      </div>
+      <br />
+      <div class="searchbar">
+        <div class="row">
+          <div class="col-2">
+            <button type="button" class="btn btn-success" id="celcius">
+              °C
+            </button>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-6">
+            <form id="search-form">
+              <input
+                type="text"
+                placeholder="Enter City Name"
+                autofocus
+                id="city-search"
+              />
+            </form>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-2">
+            <button type="button" class="btn btn-danger" id="fahrenheit">
+              °F
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary" id="current-city">
+          Current Location
+        </button>
+      </div>
+      <br />
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
